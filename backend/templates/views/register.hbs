@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Create Now</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Text&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+<link rel="icon" href="image/favicon.png" type="image/png">
+</head>
+<body>
+  <div class="background"></div>
+  <div class="login-container">
+    <div class="login-box">
+      <h2>CREATE AN ACCOUNT</h2>
+      <form id="signin" action="/register" method="POST">
+        <input name="email" type="text" id="username" placeholder="Your Email" required >
+        <input name="password" type="password" id="password" placeholder="Password" required >
+       
+        <button type="submit" class="login-btn-" class="btn">Create Now</button>
+      </form>
+
+      <p>OR</p>
+      
+     <button class="login-btn-" onclick="signInWithGoogle()">Sign up with Google</button>
+    </div>
+  </div>
+  <script src="javascript.js"></script>
+</body>
+</html>

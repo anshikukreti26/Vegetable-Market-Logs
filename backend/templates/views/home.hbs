@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vegetable Market Logs</title>
+    <!--font awesome!-->
+    <link rel="icon" href="image/favicon.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz@6..12&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+</head>
+<body>
+    <!--Header section-->
+    <header class="header">
+      <a href="#" class="logo" style="color:black"><i class="fa fa-shopping-basket" aria-hidden="true" style="padding-right:10px;"></i>Exploring</a>
+    
+        <nav class="navbar">
+            <a href="#">home</a>
+            <a href="#features">features</a>
+            <a href="#products">products</a>
+            <a href="about">About Us</a>
+        </nav>
+
+        <div class="icons">
+            <div class="fa fa-bars" id="menu-btn"></div>
+            <div class="fa fa-search" id="search-btn"></div>
+            <div class="fa fa-shopping-cart" id="cart-btn"></div>
+            <div class="fa fa-user" id="login-btn"></div>
+        </div>
+
+        <form class="search-form">
+            <input type="search" id="search-box" placeholder="Search Here">
+            <label for="search-box" class="fa fa-search"></label>
+        </form>
+
+
+        <div class="box">
+            <div class="cart-count" style="position: absolute;bottom:3px">0</div>
+            <ion-icon name="cart" size="large" id="cart-icon" style="color:black;position: absolute;bottom:3px"></ion-icon>
+        </div>
+
+        <!--cart section(changed)-->
+        <div class="cart">
+            <div class="cart-title">Cart Items</div>
+            <div class="cart-content">
+
+            </div>
+
+        <div class="total">
+                <div class="total-title">Total</div>
+                <div class="total-price">Rs.0</div>
+        </div>
+
+        <button class="btn-buy" id="payment" >Place Order</button>
+        <ion-icon name="close" id="cart-close"></ion-icon>
+
+      </div>
+      <!--cart section ends-->
+
+
+ <!--       <form action="#" class="login-form">
+            <h3>Login</h3>
+            <input type="email" placeholder="Your Email" class="box">
+            <input type="password" placeholder="Your Password" class="box">
+            <p><a href="#">Forgot Password</a></p>
+            <p>Don't have an account ?<a href="#"> Create Now</a></p>
+            <input type="submit" value="Login" class="btn">
+        </form>
+-->
+    </header>
+
+    <!--header section closed-->
+
+    <!--banner Section-->
+
+    <section class="home" id="home">
+        <div class="content">
+            <h3><b>Fresh and <span>Organic</span> Vegetables</b></h3>
+            <h3><b>Straight from the Vendors</b></h3>
+            <p><b>Explore a bountiful selection of budget-friendly, organic vegetables straight from the local vendors. Savor the goodness of fresh produce while keeping your wallet happy. Shop now for wholesome, affordable delights!</b></p>
+            <a href="#products" class="btn">Shop Now</a>
+        </div>
+    </section>
+
+    <!-- feature section -->
+    
+    <section class="features" id="features">
+      <h1 class="heading"><span>Our Features</span></h1>
+  <div class="box-container">
+   <div class="box1">
+    <img src="image/pic1.jpg" alt="" srcset="">
+    <h3>Fresh and Organinc</h3>
+    <p>Delightful organic vegetable, delivered for your wellness</p>
+    <a href="#" class="btn">Read More</a>
+  </div>
+  <div class="box1">
+    <img src="image/pic2.png" alt="" srcset="">
+    <h3>Free Delivery</h3>
+    <p>Free delivery at your doorsteps.</p>
+    <a href="#" class="btn">Read More</a>
+  </div>
+  <div class="box1">
+    <img src="image/pic3.jpg" alt="" srcset="">
+    <h3>Easy Payments</h3>
+    <p>Seamless Payments for Your Convenience</p>
+    <a href="#" class="btn">Read More</a>
+  </div>
+ 
+  </div>
+    </section>
+    <!-- feature section end -->
+
+    <!--demo of food items(changed)-->
+    <div class="container" id="products">
+        <h1 class="title" style="color:black;padding-bottom: 15px;font-size:25px;">Discover the Best Food</h1>
+        <div class="shop-content">
+          <div class="food-box">
+            <div class="pic">
+              <img src="image/cart-img-03.png" class="food-img" style="width:100px;">
+            </div>
+            <h2 class="food-title">Onion</h2>
+            <span class="food-price">Rs.40</span>
+            <ion-icon name="cart" size="large" class="add-cart"></ion-icon>
+          </div>
+
+          <div class="food-box">
+            <div class="pic"><img src="image/cart-img-01.png" class="food-img" style="width:100px;"></div>
+            <h2 class="food-title">Tomato</h2>
+            <span class="food-price">Rs.25</span>
+            <ion-icon name="cart"  size="large" class="add-cart"></ion-icon>
+          </div>
+
+          <div class="food-box">
+            <div class="pic"><img src="image/cart-img-02.png" class="food-img" style="width:100px;"></div>
+            <h2 class="food-title">Capsicum</h2>
+            <span class="food-price">Rs.40</span>
+            <ion-icon name="cart"  size="large" class="add-cart"></ion-icon>
+          </div>
+
+          <div class="food-box">
+            <div class="pic"><img src="image/cart-img-04.png" class="food-img" style="width:100px;"></div>
+            <h2 class="food-title">Garlic</h2>
+            <span class="food-price">Rs.10</span>
+            <ion-icon name="cart"  size="large" class="add-cart"></ion-icon>
+          </div>
+
+          </div>
+        </div>
+    <!--demo end-->
+
+    <!--Footer-->
+    <footer>
+      <div class="footer-container">
+        <div class="footer-section">
+          <h3>About Us</h3>
+          <ul>
+            <li><a href="#">Company History</a></li>
+            <li><a href="#">Our Team</a></li>
+            <li><a href="#">Mission & Vision</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Contact Us</h3>
+          <ul>
+            <li><a href="#">Customer Support</a></li>
+            <li><a href="#">Sales Inquiries</a></li>
+            <li><a href="#">Report a Problem</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Terms & Conditions</h3>
+          <ul>
+            <li><a href="#">Shipping Policy</a></li>
+            <li><a href="#">Return & Refund Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Privacy Policy</h3>
+          <ul>
+            <li><a href="#">Data Protection</a></li>
+            <li><a href="#">Cookie Policy</a></li>
+            <li><a href="#">Privacy Statement</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Social Media</h3>
+          <ul>
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">Instagram</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+    <footer>
+      <div class="footer-container">
+        <div class="footer-section">
+          <p class="footer-section-p">&copy; 2023 Exploring.</p>
+          <p> All rights reserved.</p>
+        </div>
+        <!-- Rest of the footer sections -->
+      </div>
+    </footer>
+    <!--Footer-->
+
+    <script src="javascript.js"></script>
+</body>
+</html>
