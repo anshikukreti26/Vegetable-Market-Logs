@@ -189,3 +189,28 @@ function updateTotal()
 
 }
 
+const predictionForm = document.getElementById('prediction-form');
+const resultContainer = document.getElementById('result');
+
+predictionForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const vegetableInput = document.getElementById('vegetable').value;
+    const dateInput = document.getElementById('date').value;
+
+    // Make a POST request to your backend with the vegetable and date inputs
+    const response = await fetch('/predict', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ vegetable: vegetableInput, date: dateInput }),
+    });
+
+    if (response.ok) {
+        const data = await response.json();
+        resultContainer.textContent = `Predicted average price of ${vegetableInput} on ${dateInput} is: ${data.predictedPrice.toFixed(2)}`;
+    } else {
+        resultContainer.textContent = 'Error predicting price';
+    }
+});
