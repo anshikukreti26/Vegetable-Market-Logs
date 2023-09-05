@@ -4,6 +4,13 @@ const mongoose = require('mongoose');
 const path=require("node:path/posix")
 const app = express();
 
+const bodyParser = require('body-parser');
+
+const joblib = require('joblib');
+const model = joblib.load('trained_model.joblib');
+
+const bodyParser = require('body-parser');
+
 // Connect to MongoDB
 mongoose.connect('mongodb+srv://Anushka:Msniprisha30**@cluster0.g4ywyno.mongodb.net/?retryWrites=true&w=majority', {
   useNewUrlParser: true,
@@ -89,4 +96,18 @@ app.get("/payment",(req,res)=>{
 
 app.listen(3000, () => {
   console.log('Server is running on port 3000');
+});
+
+app.use(bodyParser.json()); // Parse JSON request body
+
+// Create a route for predictions
+app.post('/predict', (req, res) => {
+    const vegetable_name = req.body.vegetable;
+    // You can also use req.body.date if needed
+
+    // Replace the following code with your machine learning prediction logic
+    const predicted_price = 42.0; // Replace with actual prediction logic
+
+    // Return the predicted price as JSON response
+    res.json({ predictedPrice: predicted_price });
 });
