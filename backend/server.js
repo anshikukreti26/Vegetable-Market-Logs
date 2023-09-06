@@ -105,7 +105,7 @@ app.post('/predict', (req, res) => {
   try {
     const vegetable_name = req.body.vegetable; // Get vegetable name from request body
     // Load dataset and prepare input data for prediction
-    const data = require('./dataset.json'); // Load dataset (assuming it's in JSON format)
+    const data = require('./dataset.json'); // Load dataset 
     const input_data = data.find(item => item.Commodity === vegetable_name);
     if (!input_data) {
       return res.status(404).json({ error: 'Vegetable not found in dataset' });
