@@ -102,12 +102,25 @@ app.use(bodyParser.json()); // Parse JSON request body
 
 // Create a route for predictions
 app.post('/predict', (req, res) => {
-    const vegetable_name = req.body.vegetable;
-    // You can also use req.body.date if needed
-
-    // Replace the following code with your machine learning prediction logic
-    const predicted_price = 42.0; // Replace with actual prediction logic
-
-    // Return the predicted price as JSON response
-    res.json({ predictedPrice: predicted_price });
+  try {
+    const vegetable_name = req.body.vegetable; // Get vegetable name from request body
+    // Load dataset and prepare input data for prediction
+    const data = require('./dataset.json'); // Load dataset (assuming it's in JSON format)
+    const input_data = data.find(item => item.Commodity === vegetable_name);
+    if (!input_data) {
+      return res.status(404).json({ error: 'Vegetable not found in dataset' });
+    }
+    // Create an empty object for input features
+    const input_features = {};
+    // Add the dynamic key-value pair to input_features
+    input_features['Commodity_' + vegetable_name] = 1; 
+    // Make predictions using the loaded model
+    const predicted_price = model.predict([input_features]); 
+    // Return the predicted price as a JSON response
+    res.json({ predictedPrice: predicted_price[0] });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'An error occurred during prediction.' });
+  }
 });
+
