@@ -214,3 +214,21 @@ predictionForm.addEventListener('submit', async (e) => {
         resultContainer.textContent = 'Error predicting price';
     }
 });
+
+
+
+
+// Populate the vegetable dropdown
+const vegetableDropdown = document.getElementById('vegetable');
+fetch('/vegetables')
+  .then(response => response.json())
+  .then(data => {
+    data.vegetables.forEach(vegetable => {
+      const option = document.createElement('option');
+      option.value = vegetable.name;
+      option.textContent = vegetable.name;
+      vegetableDropdown.appendChild(option);
+    });
+  });
+
+// ... (Rest of your JavaScript code remains the same)
