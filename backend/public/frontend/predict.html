@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Price Prediction</title>
+  <link rel="stylesheet" href="predict.css">
+</head>
+<body>
+  <form id="prediction-form">
+    <label for="vegetable">Vegetable Name:</label>
+    <select id="vegetable" name="vegetable" required>
+      <!-- JavaScript will populate this dropdown from dataset.json -->
+    </select>
+    <label for="date">Date:</label>
+    <input type="date" id="date" name="date" required>
+    <button type="submit">Predict Price</button>
+  </form>
+  <p id="result"></p> <!-- Result container -->
+  
+  <script src="/backend/public/javascript.js"></script>
+</body>
+</html>

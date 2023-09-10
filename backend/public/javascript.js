@@ -229,5 +229,5 @@ fetch('/vegetables')
     });
   });
 
-// ... (Rest of your JavaScript code remains the same)
+
 
