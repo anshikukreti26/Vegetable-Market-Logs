@@ -6,10 +6,9 @@ const app = express();
 
 const bodyParser = require('body-parser');
 
-const joblib = require('joblib');
-const model = joblib.load('trained_model.joblib');
+const { exec } = require('child_process');
+const fs = require('fs');
 
-const bodyParser = require('body-parser');
 
 // Connect to MongoDB
 mongoose.connect('mongodb+srv://anshikukreti26:130519Mk@vegetable-market-log.ixa5dvw.mongodb.net/?retryWrites=true&w=majority', {
@@ -100,27 +99,63 @@ app.listen(3000, () => {
 
 app.use(bodyParser.json()); // Parse JSON request body
 
-// Create a route for predictions
+
+
+app.listen(3000, () => {
+  console.log('Server is running on port 3000');
+});
+
+app.use(bodyParser.json()); // Parse JSON request body
+
+// Serve your HTML files
+app.use(express.static(__dirname + '/public'));
+
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/public/index.html');
+});
+
+// Add a route to handle predictions
 app.post('/predict', (req, res) => {
   try {
-    const vegetable_name = req.body.vegetable; // Get vegetable name from request body
-    // Load dataset and prepare input data for prediction
-    const data = require('./dataset.json'); // Load dataset 
-    const input_data = data.find(item => item.Commodity === vegetable_name);
-    if (!input_data) {
-      return res.status(404).json({ error: 'Vegetable not found in dataset' });
-    }
-    // Create an empty object for input features
-    const input_features = {};
-    // Add the dynamic key-value pair to input_features
-    input_features['Commodity_' + vegetable_name] = 1; 
-    // Make predictions using the loaded model
-    const predicted_price = model.predict([input_features]); 
-    // Return the predicted price as a JSON response
-    res.json({ predictedPrice: predicted_price[0] });
+    const vegetable_name = req.body.vegetable;
+
+    // Use the child_process module to run the Python script
+    const pythonScript = 'MachineLearning.py'; // Modify this to your Python script name
+    const command = `python ${pythonScript} "${vegetable_name}"`;
+
+    exec(command, (error, stdout, stderr) => {
+      if (error) {
+        console.error(`Error executing Python script: ${error}`);
+        res.status(500).json({ error: 'An error occurred during prediction.' });
+      } else {
+        const predicted_price = parseFloat(stdout.trim());
+        res.json({ predictedPrice: predicted_price });
+      }
+    });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'An error occurred during prediction.' });
   }
 });
 
+app.use(bodyParser.json()); // Parse JSON request body
+
+// Serve your HTML files
+app.use(express.static(__dirname + '/public'));
+
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/public/index.html');
+});
+
+// Add a route to fetch vegetable names from dataset.json
+app.get('/vegetables', (req, res) => {
+  fs.readFile('dataset.json', 'utf8', (err, data) => {
+    if (err) {
+      console.error(`Error reading dataset.json: ${err}`);
+      res.status(500).json({ error: 'An error occurred while fetching vegetable names.' });
+    } else {
+      const vegetables = JSON.parse(data).map(entry => ({ name: entry.Commodity }));
+      res.json({ vegetables });
+    }
+  });
+});
