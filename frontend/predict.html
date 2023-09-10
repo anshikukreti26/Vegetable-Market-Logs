@@ -8,13 +8,15 @@
 <body>
   <form id="prediction-form">
     <label for="vegetable">Vegetable Name:</label>
-    <input type="text" id="vegetable" name="vegetable" required>
+    <select id="vegetable" name="vegetable" required>
+      <!-- JavaScript will populate this dropdown from dataset.json -->
+    </select>
     <label for="date">Date:</label>
     <input type="date" id="date" name="date" required>
     <button type="submit">Predict Price</button>
   </form>
   <p id="result"></p> <!-- Result container -->
   
-  <script src="script.js"></script>
+  <script src="javascript.js"></script>
 </body>
 </html>
