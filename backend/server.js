@@ -12,7 +12,7 @@ const model = joblib.load('trained_model.joblib');
 const bodyParser = require('body-parser');
 
 // Connect to MongoDB
-mongoose.connect('mongodb+srv://Anushka:Msniprisha30**@cluster0.g4ywyno.mongodb.net/?retryWrites=true&w=majority', {
+mongoose.connect('mongodb+srv://anshikukreti26:130519Mk@vegetable-market-log.ixa5dvw.mongodb.net/?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
  
