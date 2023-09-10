@@ -1,0 +1,11 @@
+{
+  "name": "vegetable-market-logs",
+  "version": "1.0.0",
+  "description": "A website that lets you order vegetables to your house, straight from the vendors.\r Additionally, it predicts future prices too.\r Machine Learning uses Logistic Regression.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
