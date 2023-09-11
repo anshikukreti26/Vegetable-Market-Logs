@@ -216,7 +216,7 @@ document.getElementById('signupForm').addEventListener('submit', async function 
 });
 
 
-// Populate the vegetable dropdown
+/* Populate the vegetable dropdown
 const vegetableDropdown = document.getElementById('vegetable');
 fetch('/vegetables')
   .then(response => response.json())
@@ -228,6 +228,21 @@ fetch('/vegetables')
       vegetableDropdown.appendChild(option);
     });
   });
+  */
+
+  // Populate the vegetable dropdown
+const vegetableDropdown = document.getElementById('vegetable');
+fetch('dataset.json') // Adjust the path if needed
+  .then(response => response.json())
+  .then(data => {
+    data.forEach(vegetable => {
+      const option = document.createElement('option');
+      option.value = vegetable.name;
+      option.textContent = vegetable.name;
+      vegetableDropdown.appendChild(option);
+    });
+  });
+
 
 
 
