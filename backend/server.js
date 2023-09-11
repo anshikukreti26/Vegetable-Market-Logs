@@ -46,7 +46,15 @@ app.get("/register", (req, res) => {
 });
 
 app.post('/register', async (req, res) => {
-  // ... (existing code for registration)
+  const user = await User.findOne({ email:req.body.email });
+  if (user) {
+    return res.status(404).send("User already there");
+  }
+  
+  const newUser = new User({email: req.body.email, password:req.body.password });
+  await newUser.save();
+
+  res.status(201).send("Record added successfully");
 });
 
 // Handle user login
@@ -55,7 +63,26 @@ app.get("/login", (req, res) => {
 });
 
 app.post('/login', async (req, res) => {
-  // ... (existing code for login)
+  try{
+    const email=req.body.email;
+    const password=req.body.password;
+  
+    console.log(`${email}`);
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(404).send("User not found");
+    }
+  
+    if (user.password !== password) {
+      return res.status(401).send("Incorrect password");
+    }
+    console.log("successfully login")
+    res.render("home");
+   }
+   catch(err)
+   {
+    res.status(400).send("invalid email");
+   }
 });
 
 app.get("/about", (req, res) => {
