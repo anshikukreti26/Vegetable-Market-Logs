@@ -3,4 +3,4 @@ A website that lets you order vegetables to your house, straight from the vendor
 Additionally, it predicts future prices too.
 Machine Learning uses Logistic Regression.
 
-Project Done.
+Project Done
